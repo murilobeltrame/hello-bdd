@@ -11,6 +11,14 @@ A popular standard to describe behaviour that way is **Gherkin**.<br />
 
 The rest of the files are basically CodeceptJs`s infrastruture files (configuration, dependencies, etc ...)
 
+## Running
+
+The tests are configured to use `chromium`, so **Google Chrome** are required to be installed on running machine.<br />
+It`s possible to choose witch runtime and target platform by changing de CodeceptJS configuration file. For more information look at [CodeceptJS documentation](https://codecept.io/basics/#architecture).
+
+1. Install dependencies with `npm i` or `npm ci`
+2. Run tests with `npx codeceptjs run`, alternatively it's possible to use `--grep` to run a matching group of tests.
+
 ## References:
 
 - [CodeceptJS](https://codecept.io/)
