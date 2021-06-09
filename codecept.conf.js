@@ -1,11 +1,4 @@
-const { setHeadlessWhen } = require('@codeceptjs/configure');
-
-// turn on headless mode when running with HEADLESS=true environment variable
-// export HEADLESS=true && npx codeceptjs run
-setHeadlessWhen(process.env.HEADLESS);
-
 exports.config = {
-  tests: './*.test.js',
   output: './output',
   helpers: {
     Playwright: {
@@ -17,19 +10,30 @@ exports.config = {
   include: {
     I: './steps_file.js'
   },
-  bootstrap: null,
   mocha: {},
-  name: 'hello-bdd',
+  bootstrap: null,
+  teardown: null,
+  hooks: [],
+  gherkin: {
+    features: './features/*.feature',
+    steps: [
+      './step_definitions/steps.js',
+      './step_definitions/find_a_repo.js',
+      './step_definitions/story_of_a_hero.js'
+    ]
+  },
   plugins: {
+    screenshotOnFail: {
+      enabled: true
+    },
     pauseOnFail: {},
     retryFailedStep: {
       enabled: true
     },
     tryTo: {
       enabled: true
-    },
-    screenshotOnFail: {
-      enabled: true
     }
-  }
+  },
+  tests: './*.test.js',
+  name: 'hello-bdd'
 }
